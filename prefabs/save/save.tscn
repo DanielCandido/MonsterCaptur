@@ -1,0 +1,113 @@
+[gd_scene load_steps=19 format=3 uid="uid://bvday20qcx7mq"]
+
+[ext_resource type="Script" path="res://prefabs/save/save.gd" id="1_uhtt4"]
+[ext_resource type="Texture2D" uid="uid://cp6074kf6f1ga" path="res://assets/Fire/Fogo_1.png" id="3_3u6sw"]
+[ext_resource type="Script" path="res://prefabs/save/notification.gd" id="3_s621p"]
+[ext_resource type="Texture2D" uid="uid://d0k6kffjvyqbe" path="res://assets/Fire/Fogo_2.png" id="4_ajxpf"]
+[ext_resource type="Texture2D" uid="uid://bcrwmgke4kxnt" path="res://assets/Fire/Fogo_3.png" id="5_xkoc2"]
+[ext_resource type="Texture2D" uid="uid://cp28uqivsx88e" path="res://assets/Fire/Fogo_4.png" id="6_t172m"]
+[ext_resource type="Texture2D" uid="uid://bpnsnxgtn362" path="res://assets/Fire/bg-fire.png" id="7_ae4xo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_371wh"]
+texture = ExtResource("7_ae4xo")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lgn3o"]
+sources/0 = SubResource("TileSetAtlasSource_371wh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sy1i"]
+size = Vector2(15, 14)
+
+[sub_resource type="Theme" id="Theme_000qt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nw52"]
+
+[sub_resource type="Theme" id="Theme_jdkn1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjvtu"]
+atlas = ExtResource("3_3u6sw")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urubs"]
+atlas = ExtResource("4_ajxpf")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq3np"]
+atlas = ExtResource("5_xkoc2")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfbb0"]
+atlas = ExtResource("6_t172m")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfiex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjvtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urubs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq3np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfbb0")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[node name="save" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_uhtt4")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-10, -9)
+scale = Vector2(1, 1)
+tile_set = SubResource("TileSet_lgn3o")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0)
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_6sy1i")
+
+[node name="notification" type="CanvasLayer" parent="."]
+script = ExtResource("3_s621p")
+
+[node name="Panel" type="Panel" parent="notification"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 52.0
+offset_bottom = 44.0
+theme = SubResource("Theme_000qt")
+theme_override_styles/panel = SubResource("StyleBoxTexture_3nw52")
+
+[node name="Label" type="Label" parent="notification/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 46.0
+offset_bottom = 34.0
+theme = SubResource("Theme_jdkn1")
+theme_override_colors/font_color = Color(0.376471, 0.803922, 0.45098, 1)
+theme_override_colors/font_shadow_color = Color(0.415686, 0.721569, 0.333333, 1)
+text = "Salvo"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 171
+
+[node name="fire" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.7, -10.2)
+scale = Vector2(0.197656, 0.185938)
+sprite_frames = SubResource("SpriteFrames_jfiex")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.0866885
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
