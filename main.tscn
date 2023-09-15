@@ -1011,7 +1011,8 @@ texture = ExtResource("6_33jvx")
 17:12/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_pe1c4"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_eyoff")
 sources/1 = SubResource("TileSetAtlasSource_kj1sb")
 sources/2 = SubResource("TileSetAtlasSource_hst50")
@@ -1027,25 +1028,7 @@ shader_parameter/move_speed = 0.5
 [node name="world" type="Node2D"]
 script = ExtResource("1_0kywd")
 
-[node name="enemy" parent="." instance=ExtResource("1_xe2va")]
-position = Vector2(24, 235)
-
-[node name="save" parent="." instance=ExtResource("5_vnq6j")]
-position = Vector2(663, 267)
-
-[node name="moving_platform" parent="." instance=ExtResource("12_ohdyr")]
-position = Vector2(242, 189)
-
-[node name="moving_platform2" parent="." instance=ExtResource("12_ohdyr")]
-position = Vector2(70, 139)
-move_horizontal = false
-
-[node name="player" parent="." instance=ExtResource("5_dkio7")]
-position = Vector2(160, 100)
-collision_mask = 15
-
 [node name="level" type="TileMap" parent="."]
-z_index = -1
 position = Vector2(113, 293)
 tile_set = SubResource("TileSet_pe1c4")
 format = 2
@@ -1057,7 +1040,24 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-196599, 327681, 1, -196602, 327681, 1, -196596, 65537, 1, -131051, 589825, 1, -131048, 589825, 1, -131045, 589825, 1, -196608, 65537, 1, -196605, 327681, 1, -131056, 589825, 1, -131075, 327681, 1)
+layer_1/tile_data = PackedInt32Array(-131051, 589825, 1, -131048, 589825, 1, -131045, 589825, 1, -131056, 589825, 1, -196569, 327681, 1)
+
+[node name="enemy" parent="." instance=ExtResource("1_xe2va")]
+position = Vector2(24, 235)
+
+[node name="save" parent="." instance=ExtResource("5_vnq6j")]
+position = Vector2(672, 267)
+
+[node name="moving_platform" parent="." instance=ExtResource("12_ohdyr")]
+position = Vector2(242, 153)
+
+[node name="moving_platform2" parent="." instance=ExtResource("12_ohdyr")]
+position = Vector2(70, 139)
+move_horizontal = false
+
+[node name="player" parent="." instance=ExtResource("5_dkio7")]
+position = Vector2(160, 100)
+collision_mask = 15
 
 [node name="BG" type="ParallaxBackground" parent="."]
 
@@ -1108,6 +1108,7 @@ motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(432, 0)
 
 [node name="texture" type="Sprite2D" parent="BG/01"]
+position = Vector2(-1, 1)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("10_uksxm")
 centered = false

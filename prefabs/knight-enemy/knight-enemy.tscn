@@ -1,13 +1,37 @@
-[gd_scene load_steps=17 format=3 uid="uid://bliyouhvl005n"]
+[gd_scene load_steps=33 format=3 uid="uid://bliyouhvl005n"]
 
 [ext_resource type="Script" path="res://prefabs/knight-enemy/knight-enemy.gd" id="1_q4ttv"]
 [ext_resource type="Texture2D" uid="uid://cq6e4jupkqpre" path="res://assets/Sprite Enemies/Knight_1/Walk.png" id="1_xnl53"]
 [ext_resource type="Texture2D" uid="uid://cbiek1p07mvkb" path="res://assets/Sprite Enemies/Knight_1/Hurt.png" id="2_hc6d8"]
+[ext_resource type="Texture2D" uid="uid://cne5r1bvuic1f" path="res://assets/Sprite Enemies/Knight_1/Attack 1.png" id="2_kh1c1"]
+[ext_resource type="Texture2D" uid="uid://bd70e4v5ip1fi" path="res://assets/Sprite Enemies/Knight_1/Dead.png" id="3_807ks"]
 [ext_resource type="PackedScene" uid="uid://cnahgxkt25bu7" path="res://prefabs/hitbox/hitbox.tscn" id="3_t5h50"]
+[ext_resource type="AudioStream" uid="uid://ds7r6ydxj3jdy" path="res://sounds/ouchmp3-14591.mp3" id="6_mb26j"]
+[ext_resource type="AudioStream" uid="uid://xqiv3qbsji2g" path="res://sounds/epic-battle-sound-9414.mp3" id="8_qokb0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kypy0"]
 radius = 17.0
 height = 52.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg3f"]
+atlas = ExtResource("2_kh1c1")
+region = Rect2(0, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s57ig"]
+atlas = ExtResource("2_kh1c1")
+region = Rect2(83, 0, 83, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnr6x"]
+atlas = ExtResource("2_kh1c1")
+region = Rect2(168, 0, 84, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3qyb"]
+atlas = ExtResource("2_kh1c1")
+region = Rect2(249, 0, 83, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmk13"]
+atlas = ExtResource("2_kh1c1")
+region = Rect2(321, 0, 107, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1gxt"]
 atlas = ExtResource("2_hc6d8")
@@ -16,6 +40,30 @@ region = Rect2(0, 0, 70, 86)
 [sub_resource type="AtlasTexture" id="AtlasTexture_82bm8"]
 atlas = ExtResource("2_hc6d8")
 region = Rect2(70, 0, 70, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oetkc"]
+atlas = ExtResource("3_807ks")
+region = Rect2(0, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_770kt"]
+atlas = ExtResource("3_807ks")
+region = Rect2(80, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai3xr"]
+atlas = ExtResource("3_807ks")
+region = Rect2(160, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rk2f"]
+atlas = ExtResource("3_807ks")
+region = Rect2(240, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enytv"]
+atlas = ExtResource("3_807ks")
+region = Rect2(320, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_numil"]
+atlas = ExtResource("3_807ks")
+region = Rect2(400, 0, 80, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qlru"]
 atlas = ExtResource("1_xnl53")
@@ -49,6 +97,26 @@ region = Rect2(496, 0, 62, 86)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_leg3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s57ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnr6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3qyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmk13")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s1gxt")
 }, {
 "duration": 1.0,
@@ -57,6 +125,29 @@ animations = [{
 "loop": true,
 "name": &"damage",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oetkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_770kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai3xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rk2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enytv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_numil")
+}],
+"loop": true,
+"name": &"death",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -82,16 +173,19 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo5c7"]
 radius = 7.0
 height = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndisf"]
+size = Vector2(366, 94.5)
+
 [node name="enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
-collision_mask = 35
+collision_mask = 34
 script = ExtResource("1_q4ttv")
 
 [node name="collision" type="CollisionShape2D" parent="."]
@@ -100,12 +194,17 @@ shape = SubResource("CapsuleShape2D_kypy0")
 
 [node name="texture" type="AnimatedSprite2D" parent="." groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_8yc27")
-animation = &"walk"
+animation = &"attack"
 autoplay = "walk"
-frame_progress = 0.775739
+frame_progress = 0.289941
+
+[node name="damaged_sound" type="AudioStreamPlayer2D" parent="texture"]
+stream = ExtResource("6_mb26j")
 
 [node name="wall_detector" type="RayCast2D" parent="."]
+position = Vector2(8, 18)
 target_position = Vector2(29, 0)
+collision_mask = 2
 
 [node name="hitbox" parent="." instance=ExtResource("3_t5h50")]
 collision_mask = 1
@@ -114,3 +213,16 @@ collision_mask = 1
 position = Vector2(4, -15)
 shape = SubResource("CapsuleShape2D_xo5c7")
 debug_color = Color(0.901961, 0.223529, 0.545098, 0.419608)
+
+[node name="field_of_vision" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="colission" type="CollisionShape2D" parent="field_of_vision"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ndisf")
+
+[node name="batle_sound" type="AudioStreamPlayer2D" parent="field_of_vision"]
+stream = ExtResource("8_qokb0")
+
+[connection signal="body_entered" from="field_of_vision" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="field_of_vision" to="." method="_on_field_of_vision_body_exited"]

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player = $player as CharacterBody2D
 @onready var camera = $cam as Camera2D
+@onready var enemy = $enemy as CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
