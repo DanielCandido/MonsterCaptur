@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/epic-battle-sound-9414.mp3-2644faaee488293e0e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

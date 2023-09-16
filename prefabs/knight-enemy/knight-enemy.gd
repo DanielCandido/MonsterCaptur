@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 @onready var texture = $texture as AnimatedSprite2D
 @onready var damaged_sound = $texture/damaged_sound as AudioStreamPlayer2D
 @onready var battle_sound = $field_of_vision/batle_sound as AudioStreamPlayer2D
+@onready var collision = $hitbox/hitbox as CollisionShape2D
 
 var sound_battle_playing := false
 
@@ -37,15 +38,9 @@ func _physics_process(delta: float):
 	
 func attack():
 	texture.play("attack")
+	collision.transform.x = Vector2(1.4, 0)
 	SPEED = 0
 	await get_tree().create_timer(0.5).timeout
+	collision.transform.x = Vector2(1, 0)
 	texture.play("walk")
 	SPEED = 8000.00
-
-func _on_area_2d_body_entered(body):
-	if body.name == 'player':
-		battle_sound.play(0)
-		
-func _on_field_of_vision_body_exited(body):
-	if body.name == 'player':
-		battle_sound.stop()

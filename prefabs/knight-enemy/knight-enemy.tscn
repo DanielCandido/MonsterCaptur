@@ -177,11 +177,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo5c7"]
-radius = 7.0
-height = 14.0
+radius = 22.0
+height = 58.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndisf"]
-size = Vector2(366, 94.5)
+size = Vector2(660.25, 102.25)
 
 [node name="enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -207,10 +207,10 @@ target_position = Vector2(29, 0)
 collision_mask = 2
 
 [node name="hitbox" parent="." instance=ExtResource("3_t5h50")]
-collision_mask = 1
+collision_mask = 32
 
 [node name="hitbox" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(4, -15)
+position = Vector2(4, 7)
 shape = SubResource("CapsuleShape2D_xo5c7")
 debug_color = Color(0.901961, 0.223529, 0.545098, 0.419608)
 
@@ -218,11 +218,9 @@ debug_color = Color(0.901961, 0.223529, 0.545098, 0.419608)
 collision_layer = 64
 
 [node name="colission" type="CollisionShape2D" parent="field_of_vision"]
-position = Vector2(0, 1)
+visible = false
+position = Vector2(37, -2.875)
 shape = SubResource("RectangleShape2D_ndisf")
 
 [node name="batle_sound" type="AudioStreamPlayer2D" parent="field_of_vision"]
 stream = ExtResource("8_qokb0")
-
-[connection signal="body_entered" from="field_of_vision" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="field_of_vision" to="." method="_on_field_of_vision_body_exited"]
