@@ -1053,7 +1053,7 @@ position = Vector2(1027, 236)
 position = Vector2(672, 267)
 
 [node name="moving_platform" parent="." instance=ExtResource("12_ohdyr")]
-position = Vector2(242, 153)
+position = Vector2(242, 164)
 
 [node name="moving_platform2" parent="." instance=ExtResource("12_ohdyr")]
 position = Vector2(70, 139)

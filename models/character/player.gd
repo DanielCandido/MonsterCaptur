@@ -21,6 +21,7 @@ var is_deathing := false
 @onready var kick_sound := $kick_sound as AudioStreamPlayer2D
 @onready var collision := $collision as CollisionShape2D
 @onready var hurtbox := $hurtbox as Area2D
+@onready var basic_attack := $attack_area/basic_attack as CollisionShape2D
 
 @onready var _attack_timer := $attack_timer as Timer
 @onready var _death_timer := $death_timer as Timer
@@ -47,12 +48,13 @@ func _physics_process(delta):
 
 func _basic_attack() -> void:
 	if Input.is_action_just_pressed("attack") and is_attacking == false:
+		set_physics_process(false)
 		is_attacking = true
 		_attack_timer.start()
 		kick_sound.play(0)
-		collision.transform.x = Vector2(3, 0)
+		basic_attack.transform.x = Vector2(3, 0)
 		await get_tree().create_timer(0.5).timeout
-		collision.transform.x = Vector2(1, 0)
+		basic_attack.transform.x = Vector2(1, 0)
 
 func _move() -> void:
 	direction = Input.get_axis("ui_left", "ui_right")
@@ -99,7 +101,9 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25, damage:= 0.0
 	print(player_life)
 	
 	if player_life <= 0:
-		is_death = true
+		is_deathing = true		
+		_death_timer.start()
+		
 	elif knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
 		
@@ -119,8 +123,9 @@ func _set_state():
 	if is_attacking:
 		state = "basic_attack"
 		
-	if is_deathing:		
+	if is_deathing:
 		state = "deathing"
+		
 	if is_death:
 		state = "death"
 		
@@ -135,8 +140,10 @@ func _set_state():
 
 func _on_attack_timer_timeout():	
 	is_attacking = false
+	set_physics_process(true)
 
 func _on_death_timer_timeout():
+	set_physics_process(true)
 	is_deathing = false
 	is_death = true
 
