@@ -19,6 +19,6 @@ func _process(delta):
 	if vision.is_colliding() and !starting:
 		print("play")
 		battle_sound.play(0)
-	else if !vision.is_colliding():
+	elif !vision.is_colliding():
 		battle_sound.stop()
 		

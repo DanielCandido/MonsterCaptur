@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player = $player as CharacterBody2D
+@onready var player = $npc as CharacterBody2D
 @onready var camera = $cam as Camera2D
 @onready var enemy = $enemy as CharacterBody2D
 @onready var battle_sound = $field_of_vision2/battle_sound as AudioStreamPlayer2D
@@ -10,14 +10,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player.follow_camera(camera)
+	player._follow_camera(camera)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	_player_death()
 		
 func _player_death():
-	if player != null and player.is_death:
+	if player != null and player._is_death:
 		battle_sound.stop()
 		button_restart.disabled = false
 		player.set_collision_mask_value(3, false)

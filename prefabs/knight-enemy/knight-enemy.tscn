@@ -9,9 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://ds7r6ydxj3jdy" path="res://sounds/ouchmp3-14591.mp3" id="6_mb26j"]
 [ext_resource type="AudioStream" uid="uid://xqiv3qbsji2g" path="res://sounds/epic-battle-sound-9414.mp3" id="8_qokb0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kypy0"]
-radius = 17.0
-height = 52.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c50c"]
+size = Vector2(20, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_leg3f"]
 atlas = ExtResource("2_kh1c1")
@@ -177,8 +176,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo5c7"]
-radius = 22.0
-height = 58.0
+radius = 36.0
+height = 84.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndisf"]
 size = Vector2(660.25, 102.25)
@@ -189,14 +188,13 @@ collision_mask = 34
 script = ExtResource("1_q4ttv")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(7, 17)
-shape = SubResource("CapsuleShape2D_kypy0")
+position = Vector2(1, 40)
+shape = SubResource("RectangleShape2D_7c50c")
 
 [node name="texture" type="AnimatedSprite2D" parent="." groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_8yc27")
-animation = &"attack"
+animation = &"damage"
 autoplay = "walk"
-frame_progress = 0.289941
 
 [node name="damaged_sound" type="AudioStreamPlayer2D" parent="texture"]
 stream = ExtResource("6_mb26j")
@@ -207,11 +205,9 @@ target_position = Vector2(29, 0)
 collision_mask = 2
 
 [node name="hitbox" parent="." instance=ExtResource("3_t5h50")]
-collision_layer = 32
-collision_mask = 16
+collision_mask = 32
 
 [node name="hitbox" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(4, 7)
 shape = SubResource("CapsuleShape2D_xo5c7")
 debug_color = Color(0.901961, 0.223529, 0.545098, 0.419608)
 
@@ -225,3 +221,8 @@ shape = SubResource("RectangleShape2D_ndisf")
 
 [node name="batle_sound" type="AudioStreamPlayer2D" parent="field_of_vision"]
 stream = ExtResource("8_qokb0")
+
+[node name="damage_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]

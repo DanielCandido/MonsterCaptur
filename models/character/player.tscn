@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bw33fkv8ux2bl"]
+[gd_scene load_steps=54 format=3 uid="uid://bw33fkv8ux2bl"]
 
 [ext_resource type="Script" path="res://models/character/player.gd" id="1_nng7y"]
 [ext_resource type="Texture2D" uid="uid://crcw8ottdijag" path="res://assets/player/Fire_Warrior/Fire_Warrior-Sheet.png" id="7_0sgwb"]
@@ -403,28 +403,37 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kxi68"]
-radius = 17.0
-height = 40.0
+radius = 13.0
+height = 50.0
+
+[sub_resource type="Animation" id="Animation_rakjm"]
+resource_name = "run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jg55s"]
+_data = {
+"run": SubResource("Animation_rakjm")
+}
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 30
 script = ExtResource("1_nng7y")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(-4, 3)
 shape = SubResource("CapsuleShape2D_lng1v")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_inrtl")
-animation = &"basic_attack"
+animation = &"deathing"
 autoplay = "run"
+frame_progress = 0.956813
 
 [node name="hurtbox" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 20
 
 [node name="collision_2" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(0, -3)
+position = Vector2(-5, 0)
 shape = SubResource("CapsuleShape2D_kxi68")
 debug_color = Color(0.909804, 0.196078, 0.568627, 0.419608)
 
@@ -456,12 +465,19 @@ wait_time = 3.0
 one_shot = true
 
 [node name="attack_area" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 16
 
 [node name="basic_attack" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(0, 3)
+visible = false
+position = Vector2(-3, 4)
 shape = SubResource("CapsuleShape2D_lng1v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jg55s")
+}
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
