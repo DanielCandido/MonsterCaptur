@@ -101,7 +101,7 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25, damage:= 0.0
 	print(player_life)
 	
 	if player_life <= 0:
-		is_deathing = true		
+		is_deathing = true
 		_death_timer.start()
 		
 	elif knockback_force != Vector2.ZERO:

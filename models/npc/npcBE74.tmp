@@ -1,9 +1,7 @@
-[gd_scene load_steps=67 format=3 uid="uid://c163k2isyesac"]
+[gd_scene load_steps=47 format=3 uid="uid://c163k2isyesac"]
 
 [ext_resource type="Script" path="res://models/npc/npc.gd" id="1_hsunt"]
 [ext_resource type="Texture2D" uid="uid://crcw8ottdijag" path="res://assets/player/Fire_Warrior/Fire_Warrior-Sheet.png" id="1_nmk85"]
-[ext_resource type="Texture2D" uid="uid://dvybuqwa12uhn" path="res://assets/skill_icons/fire_sword_icon.png" id="3_jwpef"]
-[ext_resource type="Texture2D" uid="uid://cisqmnulupmut" path="res://assets/skill_icons/fireball.png" id="4_h7lih"]
 
 [sub_resource type="Animation" id="Animation_voqqs"]
 length = 0.001
@@ -74,30 +72,6 @@ tracks/5/path = NodePath("texture:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("fireball_area/fireball_collision:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(46, -29)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("fireball_area/fireball_collision:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -236,7 +210,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_m32as"]
 resource_name = "death"
-length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -537,228 +510,14 @@ tracks/3/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_ytf1s"]
-resource_name = "damage"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [368, 369, 370, 371, 372]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(14, -24)]
-}
-
-[sub_resource type="Animation" id="Animation_70wj3"]
-resource_name = "damage_left"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [368, 369, 370, 371, 372]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(-14, -24)]
-}
-
-[sub_resource type="Animation" id="Animation_eehjb"]
-resource_name = "fireball"
-length = 2.45
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.303064, 0.403064, 0.503064, 0.603064, 0.703064, 0.804086, 0.904086, 1.00306, 1.1, 1.20306, 1.30306, 1.40306, 1.50306, 1.60306, 1.70409, 1.80409, 1.90306, 2, 2.1, 2.2, 2.3, 2.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(14, -24)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("fireball_area/fireball_collision:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(46, -29)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("fireball_area/fireball_collision:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 2.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_346lt"]
-resource_name = "fireball_left"
-length = 2.45
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.303064, 0.403064, 0.503064, 0.603064, 0.703064, 0.804086, 0.904086, 1.00306, 1.1, 1.20306, 1.30306, 1.40306, 1.50306, 1.60306, 1.70409, 1.80409, 1.90306, 2, 2.1, 2.2, 2.3, 2.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(-14, -24)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("fireball_area/fireball_collision:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(-46, -29)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("fireball_area/fireball_collision:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 2.36497),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12ydp"]
 _data = {
 "RESET": SubResource("Animation_voqqs"),
 "basic_attack": SubResource("Animation_v4gq5"),
 "basic_attack_left": SubResource("Animation_0pjxq"),
-"damage": SubResource("Animation_ytf1s"),
-"damage_left": SubResource("Animation_70wj3"),
 "death": SubResource("Animation_m32as"),
 "fire_attack": SubResource("Animation_ewgop"),
 "fire_attack_left": SubResource("Animation_fgpqe"),
-"fireball": SubResource("Animation_eehjb"),
-"fireball_left": SubResource("Animation_346lt"),
 "idle": SubResource("Animation_t2vyv"),
 "idle_left": SubResource("Animation_cqqnm"),
 "jump": SubResource("Animation_y52sp"),
@@ -787,29 +546,6 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_tg84p")
 blend_point_2/pos = Vector2(0, -1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_qpyq5")
 blend_point_3/pos = Vector2(-1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ajm1r"]
-animation = &"damage_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e83vt"]
-animation = &"damage_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kdt7a"]
-animation = &"damage"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lonml"]
-animation = &"damage"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_aypnu"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_ajm1r")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_e83vt")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_kdt7a")
-blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_lonml")
-blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pmt0e"]
@@ -860,29 +596,6 @@ blend_point_1/pos = Vector2(0, -0.9)
 blend_point_2/node = SubResource("AnimationNodeAnimation_i3w6t")
 blend_point_2/pos = Vector2(0, 1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_xuxuu")
-blend_point_3/pos = Vector2(1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5ij8"]
-animation = &"fireball_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yhyh"]
-animation = &"fireball_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_28pow"]
-animation = &"fireball"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7e3p8"]
-animation = &"fireball"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2d8jx"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_e5ij8")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_2yhyh")
-blend_point_1/pos = Vector2(0, -0.9)
-blend_point_2/node = SubResource("AnimationNodeAnimation_28pow")
-blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_7e3p8")
 blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
@@ -944,21 +657,17 @@ blend_mode = 1
 states/Start/position = Vector2(226.667, 98.6667)
 states/basic_attack/node = SubResource("AnimationNodeBlendSpace2D_c3cv6")
 states/basic_attack/position = Vector2(551.783, 322.944)
-states/damage/node = SubResource("AnimationNodeBlendSpace2D_aypnu")
-states/damage/position = Vector2(554.667, 449.067)
 states/death/node = SubResource("AnimationNodeBlendSpace2D_pwpu0")
 states/death/position = Vector2(553.86, 270)
 states/fire_attack/node = SubResource("AnimationNodeBlendSpace2D_life8")
 states/fire_attack/position = Vector2(551.472, 388.067)
-states/fireball/node = SubResource("AnimationNodeBlendSpace2D_2d8jx")
-states/fireball/position = Vector2(548.055, 522.183)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_a87rj")
 states/idle/position = Vector2(548.741, 99.3333)
 states/jump/node = SubResource("AnimationNodeBlendSpace2D_lbg7w")
 states/jump/position = Vector2(554.667, 215.333)
 states/run/node = SubResource("AnimationNodeBlendSpace2D_8i8wk")
 states/run/position = Vector2(548.889, 156.667)
-graph_offset = Vector2(-142.945, 354.183)
+graph_offset = Vector2(-142.945, 248.067)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhvfs"]
 size = Vector2(21.5, 44)
@@ -968,19 +677,6 @@ height = 38.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsow7"]
 size = Vector2(14, 38)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_86cyb"]
-size = Vector2(48, 32)
-
-[sub_resource type="ImageTexture" id="ImageTexture_4mn5e"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yolc"]
-texture = SubResource("ImageTexture_4mn5e")
-modulate_color = Color(0.988235, 0, 0, 1)
-
-[sub_resource type="Theme" id="Theme_plm5y"]
-ProgressBar/colors/font_outline_color = Color(0, 1, 0, 1)
-ProgressBar/styles/background = SubResource("StyleBoxTexture_3yolc")
 
 [node name="npc" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree")]
 collision_mask = 6
@@ -1003,10 +699,8 @@ tree_root = SubResource("AnimationNodeStateMachine_ld2tx")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/basic_attack/blend_position = Vector2(0, 0)
-parameters/damage/blend_position = Vector2(0, 0)
 parameters/death/blend_position = Vector2(0, 0)
 parameters/fire_attack/blend_position = Vector2(0, 0)
-parameters/fireball/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/jump/blend_position = Vector2(0, 0)
 parameters/run/blend_position = Vector2(0, 0)
@@ -1014,6 +708,10 @@ parameters/run/blend_position = Vector2(0, 0)
 [node name="remote" type="RemoteTransform2D" parent="."]
 
 [node name="attack_timer" type="Timer" parent="."]
+
+[node name="fire_attack_animation_timer" type="Timer" parent="."]
+wait_time = 1.4
+one_shot = true
 
 [node name="attack_area" type="Area2D" parent="."]
 collision_layer = 16
@@ -1036,74 +734,16 @@ shape = SubResource("CapsuleShape2D_uvlg1")
 position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_fsow7")
 
-[node name="fireball_area" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 4
-
-[node name="fireball_collision" type="CollisionShape2D" parent="fireball_area"]
-position = Vector2(46, -29)
-shape = SubResource("RectangleShape2D_86cyb")
-disabled = true
-
-[node name="skills" type="Node2D" parent="."]
-position = Vector2(-154, -101)
-
-[node name="sword_fire_attack" type="Node2D" parent="skills"]
-
-[node name="fire_attack_cooldown" type="ProgressBar" parent="skills/sword_fire_attack"]
-offset_left = 10.0
-offset_top = -12.0
+[node name="fire_attack_cooldown" type="ProgressBar" parent="."]
+offset_left = -18.0
+offset_top = -85.0
 offset_right = 21.0
-offset_bottom = -1.0
+offset_bottom = -58.0
 max_value = 20.0
 step = 1.0
 value = 20.0
 rounded = true
-fill_mode = 3
-show_percentage = false
-
-[node name="fire_attack_icon" type="Sprite2D" parent="skills/sword_fire_attack"]
-position = Vector2(16, -6)
-scale = Vector2(0.00840337, 0.00727215)
-texture = ExtResource("3_jwpef")
-
-[node name="fire_attack_animation_timer" type="Timer" parent="skills/sword_fire_attack"]
-wait_time = 1.4
-one_shot = true
-
-[node name="fireball_attack" type="Node2D" parent="skills"]
-
-[node name="fireball_atack_icon" type="Sprite2D" parent="skills/fireball_attack"]
-position = Vector2(30, -6.4082)
-scale = Vector2(0.00420169, 0.0059847)
-texture = ExtResource("4_h7lih")
-
-[node name="fireball_attack_cooldown" type="ProgressBar" parent="skills/fireball_attack"]
-offset_left = 25.0
-offset_top = -12.0
-offset_right = 36.0
-offset_bottom = -1.0
-max_value = 35.0
-step = 1.0
-value = 35.0
-rounded = true
-fill_mode = 3
-show_percentage = false
-
-[node name="fireball_attack_animation_timer" type="Timer" parent="skills/fireball_attack"]
-wait_time = 2.45
-
-[node name="life_bar" type="ProgressBar" parent="skills"]
-offset_left = 10.0
-offset_top = -23.0
-offset_right = 110.0
-offset_bottom = -17.0
-theme = SubResource("Theme_plm5y")
-max_value = 0.0
-show_percentage = false
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="fire_attack_animation_timer" to="." method="_on_fire_attack_animation_timer_timeout"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_entered" from="fireball_area" to="." method="_on_fireball_area_body_entered"]
-[connection signal="timeout" from="skills/sword_fire_attack/fire_attack_animation_timer" to="." method="_on_fire_attack_animation_timer_timeout"]
-[connection signal="timeout" from="skills/fireball_attack/fireball_attack_animation_timer" to="." method="_on_fireball_attack_animation_timer_timeout"]
