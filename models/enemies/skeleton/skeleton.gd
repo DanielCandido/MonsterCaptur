@@ -10,16 +10,21 @@ var _is_death = false
 @onready var _wall_detector := $wall_detector as RayCast2D
 @onready var _damage_timer := $damage_timer as Timer
 @onready var _death_timer := $death_timer as Timer
+@onready var _hurtbox := $collision_hurtbox as CollisionObject2D
 
 # Info skeleton
 @export var enemy_level = 6
-var total_life = 400
+var total_life = 3500.00
 var total_attack = 35
 var enemy_life
 var basic_attack
 var total_exp = 300
 const SPEED = 88.0
 const JUMP_VELOCITY = -400.0
+var last_direction = 0
+
+#Drop key
+var drop_key = preload("res://prefabs/drops/eagle_key/eagle_key.tscn")
 
 @export_category("Objects")
 @export var _animation_tree: AnimationTree = null
@@ -46,6 +51,7 @@ func _physics_process(delta):
 
 func _move():	
 	if direction != 0:
+		last_direction = direction
 		_animation_tree["parameters/walk/blend_position"].x = direction
 		_animation_tree["parameters/damage/blend_position"].x = direction
 		_animation_tree["parameters/death/blend_position"].x = direction
@@ -53,22 +59,37 @@ func _move():
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-func _take_damage(damage = 0.0):
-	enemy_life -= damage
-	if (enemy_life > 0):
-		_is_attacked = true
-		_damage_timer.start()
-	else:
-		_is_death = true
-		_death_timer.start()
-
+		
 func _wall():
 	_wall_detector.set
 	if _wall_detector.is_colliding():
 		var dir = direction + direction * -1
 		direction *= -1
 		_wall_detector.scale.x *= -1
+
+func _take_damage(damage = 0.0):
+	enemy_life -= damage
+	direction = 0
+	velocity.x = 0
+	if (enemy_life > 0):
+		_is_attacked = true
+		_damage_timer.start()
+		await get_tree().create_timer(0.8).timeout
+#		print("enemy_life: " + str(enemy_life) + " direction: " + str(last_direction))	
+		direction = last_direction
+		velocity.x = direction * SPEED
+	elif !_is_death:
+		_death()
+		
+func _death():
+	_is_death = true
+	_spawn_item()
+	_death_timer.start()
+		
+func _spawn_item() -> void:
+	var sceneItem = drop_key.instantiate() as Area2D	
+	sceneItem.transform.origin = Vector2(self.global_position.x, self.global_position.y)	
+	owner.add_child(sceneItem)
 
 func _animated():
 	if _is_death:

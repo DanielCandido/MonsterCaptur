@@ -1,15 +1,23 @@
 extends Node
 
+@onready var grid := $layer/texture/container/grid as GridContainer
+@onready var layer := $layer as CanvasLayer
+
+var _inventory_opened = false
+
 enum item_list {
 	AMOUNT,
-	a,
-	b,
-	c,
-	d,
+	DESCRIPTION,
+	IMAGE,
+	UNIQUE_KEY,
+	TYPE,
 	NAME
 }
 
 var _inventory_list: Array
+
+func _process(delta):
+	pass
 
 func send_item(list: Array):
 	var new_list: Array = list.duplicate(true)
@@ -23,6 +31,11 @@ func send_item(list: Array):
 	
 	_inventory_list.append(new_list)
 	get_tree().call_group("inventory", "create_item_slot", new_list)
+	var item = TextureRect.new()
+	var image_path = list[item_list.IMAGE] as String
+	item.name = list[item_list.NAME]
+	item.texture = preload("res://assets/drops/key.png")
+	grid.add_child(item)
 	
 func update_slot(slot_index: int, new_amount: int) -> void:
 	_inventory_list[slot_index][item_list.AMOUNT] = new_amount
@@ -31,3 +44,12 @@ func update_slot(slot_index: int, new_amount: int) -> void:
 func delete_slot(slot_index: int) -> void:
 	_inventory_list.remove_at(slot_index)
 	get_tree().call_group("inventory", "delete_inventory_slot", slot_index)
+
+func show_inventory(position := Vector2.ZERO):
+	layer.visible = !layer.visible
+	print(position)
+	layer.transform.origin.x = position[0] - 107
+	layer.transform.origin.y = position[1] - 135
+
+func _on_visibility_changed():
+	print("Changed visibility " + str(self.visible))

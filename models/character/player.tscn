@@ -424,9 +424,8 @@ shape = SubResource("CapsuleShape2D_lng1v")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_inrtl")
-animation = &"deathing"
+animation = &"walk"
 autoplay = "run"
-frame_progress = 0.956813
 
 [node name="hurtbox" type="Area2D" parent="."]
 collision_layer = 32

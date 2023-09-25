@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhxrw3gkbiy00"]
+[gd_scene load_steps=3 format=3 uid="uid://bhxrw3gkbiy00"]
 
 [ext_resource type="Script" path="res://prefabs/inventory/inventory.gd" id="1_ot241"]
 
-[node name="inventory" type="Node2D"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_y7bam"]
+
+[node name="Node" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -18.0
+offset_right = -18.0
 script = ExtResource("1_ot241")
+
+[node name="layer" type="CanvasLayer" parent="."]
+visible = false
+offset = Vector2(-107, -154)
+transform = Transform2D(1, 0, 0, 1, -107, -154)
+follow_viewport_enabled = true
+
+[node name="texture" type="TextureRect" parent="layer"]
+anchors_preset = -1
+anchor_right = 0.029
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 197.02
+offset_bottom = 148.0
+texture = SubResource("CanvasTexture_y7bam")
+
+[node name="container" type="ScrollContainer" parent="layer/texture"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 212.0
+offset_bottom = 138.0
+tooltip_text = "Inventário"
+
+[node name="grid" type="GridContainer" parent="layer/texture/container"]
+layout_mode = 2
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 28
+columns = 5
+
+[connection signal="visibility_changed" from="layer" to="layer" method="_on_visibility_changed"]

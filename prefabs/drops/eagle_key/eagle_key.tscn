@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bettg2uugt5jo"]
+
+[ext_resource type="Script" path="res://prefabs/drops/eagle_key/eagle_key.gd" id="1_0y2fo"]
+[ext_resource type="Texture2D" uid="uid://ctlr67hf0ifmj" path="res://assets/drops/key.png" id="1_vwbpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kgu3"]
+size = Vector2(44, 20)
+
+[node name="eagle_key" type="Area2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_0y2fo")
+
+[node name="collision_key" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_1kgu3")
+
+[node name="icon_key" type="Sprite2D" parent="collision_key"]
+position = Vector2(0, 2)
+scale = Vector2(0.9375, 0.875)
+texture = ExtResource("1_vwbpf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
