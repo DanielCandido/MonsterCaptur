@@ -1449,7 +1449,7 @@ shape = SubResource("RectangleShape2D_86cyb")
 disabled = true
 
 [node name="skills" type="Node2D" parent="."]
-position = Vector2(-210, -110)
+position = Vector2(-100, -100)
 
 [node name="sword_fire_attack" type="Node2D" parent="skills"]
 
@@ -1507,6 +1507,7 @@ offset_bottom = -17.0
 theme = SubResource("Theme_plm5y")
 max_value = 0.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true

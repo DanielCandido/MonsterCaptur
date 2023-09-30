@@ -96,9 +96,8 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 3
 columns = 6
 
-[node name="slot" parent="Container" instance=ExtResource("5_omvb2")]
+[node name="slot1" parent="Container" instance=ExtResource("5_omvb2")]
 layout_mode = 2
-item = [40, "Recupera 100 de vida", "res://assets/drops/health.png", "simple_potion_health", "consumable", "Poção de cura"]
 
 [node name="slot2" parent="Container" instance=ExtResource("5_omvb2")]
 layout_mode = 2

@@ -1,30 +1,26 @@
 extends Control
 @onready var item: Item
-@onready var amount: int
 
 var show_button = false
 var selected_slot = false
 
-enum item_list {
-	AMOUNT,
-	DESCRIPTION,
-	IMAGE,
-	UNIQUE_KEY,
-	TYPE,
-	NAME
-}
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if item != null:
 		$sprite.texture = load(item.image)
-		$amount.text = str(amount)
+		$amount.text = str(item.amount)		
+		
+		
+	if !ProjectSettings.get_setting("shop_is_opened"):
+		show_button = false
+		selected_slot = false
 	
-	if Input.is_action_just_pressed("right_click") and selected_slot:
+	if Input.is_action_just_pressed("right_click") and selected_slot and item != null and item.amount > 0:
 		show_button = !show_button
 	
 	$Button.disabled = !show_button
@@ -59,9 +55,6 @@ func _set_empty_slot() -> void:
 func _can_drop_data(at_position, data) -> bool:
 	return true
 
-func _buy() -> void:
-	print("Comprar")
-
 func _drop_data(at_position: Vector2, data):	
 	data.backup.get_node("sprite").texture = $sprite.texture
 	data.backup.get_node("amount").text = $amount.text
@@ -71,13 +64,14 @@ func _drop_data(at_position: Vector2, data):
 
 
 func _on_button_pressed():
-	print("Comprar")
-	print(item)
-
+	var newItem = Item.new(item.id, item.name, item.description, item.value, item.max_amount, item.type, item.image, item.market_value, 1)
+	owner._buy(newItem, 1)
+	
+	item.amount -= 1
+	$amount.text = str(item.amount)
 
 func _on_mouse_entered():
 	selected_slot = true
-
 
 func _on_mouse_exited():
 	selected_slot = false

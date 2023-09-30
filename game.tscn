@@ -1352,5 +1352,5 @@ layer_0/tile_data = PackedInt32Array(1638400, 1179648, 12, 1638401, 1245184, 12,
 position = Vector2(317, 336)
 
 [node name="potion" parent="." instance=ExtResource("17_swxmj")]
-position = Vector2(72, 398)
+position = Vector2(71, 400)
 script = ExtResource("18_l7scu")

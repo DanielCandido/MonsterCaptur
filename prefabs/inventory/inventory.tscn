@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhxrw3gkbiy00"]
 
 [ext_resource type="Script" path="res://prefabs/inventory/inventory.gd" id="1_ot241"]
-[ext_resource type="PackedScene" uid="uid://ddvhi60awc8pv" path="res://scenes/shop/slot.tscn" id="2_4wsxb"]
+[ext_resource type="PackedScene" uid="uid://celksweh11svb" path="res://prefabs/inventory/slot_inventory.tscn" id="2_vdhty"]
 
 [node name="Node" type="Control"]
 layout_mode = 3
@@ -20,7 +20,7 @@ offset_right = 219.0
 offset_bottom = -2.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0, 0.301961, 0.52549, 0.964706)
+color = Color(0.627451, 0.811765, 1, 0.384314)
 
 [node name="Container" type="GridContainer" parent="."]
 visible = false
@@ -34,56 +34,56 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 3
 columns = 6
 
-[node name="slot1" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot1" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot2" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot2" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot3" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot3" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot4" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot4" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot5" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot5" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot6" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot6" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot7" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot7" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot8" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot8" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot9" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot9" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot10" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot10" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot11" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot11" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot12" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot12" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot13" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot13" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot14" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot14" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot15" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot15" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot16" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot16" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot17" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot17" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2
 
-[node name="slot18" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot18" parent="Container" instance=ExtResource("2_vdhty")]
 layout_mode = 2

@@ -9,6 +9,7 @@ var player_life = 350.00
 var _attack_type
 var _current_animation = "idle"
 var knockback_vector := Vector2.ZERO
+var total_life = 350.00
 
 #player state
 @onready var _is_death := false
@@ -268,6 +269,10 @@ func _animated():
 func _follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
+
+func _recovery_hp(hp: float):
+	player_life += hp
+	_life_bar.value = player_life
 
 func _on_attack_timer_timeout():
 	_is_attacking = false
