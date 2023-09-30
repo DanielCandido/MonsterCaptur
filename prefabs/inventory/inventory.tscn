@@ -34,7 +34,7 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 3
 columns = 6
 
-[node name="slot" parent="Container" instance=ExtResource("2_4wsxb")]
+[node name="slot1" parent="Container" instance=ExtResource("2_4wsxb")]
 layout_mode = 2
 
 [node name="slot2" parent="Container" instance=ExtResource("2_4wsxb")]

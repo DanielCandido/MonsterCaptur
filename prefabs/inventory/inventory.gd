@@ -22,7 +22,10 @@ func _process(delta):
 	
 
 func send_item(item: Item):
-	print(item)
+	_inventory_list.append(item)
+	var slot = get_node("Container/slot1")
+	slot.item = item
+	slot.amount = 4
 	
 func update_slot(slot_index: int, new_amount: int) -> void:
 	_inventory_list[slot_index][item_list.AMOUNT] = new_amount

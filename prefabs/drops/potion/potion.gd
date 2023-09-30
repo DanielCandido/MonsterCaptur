@@ -2,17 +2,18 @@ extends Area2D
 
 var troop = null
 const Item = preload("res://dictionary/item.gd")
-const DataItem = preload("res://dictionary/items_dictionary.gd")
+const ItemData = preload("res://dictionary/items_dictionary.gd")
+
+var collectable_data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-@export var collectable_data: Item = DataItem.new().all_items["small_healing_potion"]
-
+	collectable_data = ItemData.new().all_items["small_healing_potion"]
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	if is_instance_valid(troop) and Input.is_action_just_pressed("interaction"):
+		print(collectable_data)
 		troop.inventory.send_item(collectable_data)
 
 		if get_parent() is RigidBody2D:

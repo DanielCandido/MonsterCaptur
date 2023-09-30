@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://kl1flfrv1nn6"]
+[gd_scene load_steps=34 format=3 uid="uid://kl1flfrv1nn6"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_h0yok"]
 [ext_resource type="Texture2D" uid="uid://cjpot1ja8wep6" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_sy51d"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://boxurm1yd8iex" path="res://scenes/shop/shop.tscn" id="16_8jh6t"]
 [ext_resource type="Texture2D" uid="uid://cxvbtftdgqjfh" path="res://assets/oak_woods_v1.0/decorations/rock_3.png" id="16_yg4cd"]
 [ext_resource type="PackedScene" uid="uid://dca3ke2xdnm5u" path="res://prefabs/drops/potion/potion.tscn" id="17_swxmj"]
+[ext_resource type="Script" path="res://prefabs/drops/potion/potion.gd" id="18_l7scu"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_200yl"]
 tile_data = PackedInt32Array(0, 6, 0, 65536, 6, 1, 131072, 6, 2, 196608, 6, 3)
@@ -1352,3 +1353,4 @@ position = Vector2(317, 336)
 
 [node name="potion" parent="." instance=ExtResource("17_swxmj")]
 position = Vector2(72, 398)
+script = ExtResource("18_l7scu")

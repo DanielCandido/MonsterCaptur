@@ -1,5 +1,6 @@
 extends Control
-@export var item: Array
+@onready var item: Item
+@onready var amount: int
 
 var show_button = false
 var selected_slot = false
@@ -15,12 +16,14 @@ enum item_list {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !item.is_empty():
-		$sprite.texture = load(item[item_list.IMAGE])
-		$amount.text = str(item[item_list.AMOUNT])
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if item != null:
+		$sprite.texture = load(item.image)
+		$amount.text = str(amount)
+	
 	if Input.is_action_just_pressed("right_click") and selected_slot:
 		show_button = !show_button
 	

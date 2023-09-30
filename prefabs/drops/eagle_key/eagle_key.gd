@@ -1,21 +1,14 @@
 extends Area2D
 
 var troop = null
+const Item = preload("res://dictionary/item.gd")
+const ItemData = preload("res://dictionary/items_dictionary.gd")
+
+var collectable_data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-var items_data = preload("res://dictionary/items_dictionary.gd")
-
-@export var collectable_data: Array = Array([
-	1,
-	"Chave que abre a gaiola do Aguia Guardiã",
-	"res://assets/drops/key.png",
-	"",
-	"",
-	"Aguia guardiã"
-])
+	collectable_data = ItemData.new().all_items["eagle_key"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
