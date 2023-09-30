@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhxrw3gkbiy00"]
 
 [ext_resource type="Script" path="res://prefabs/inventory/inventory.gd" id="1_ot241"]
-[ext_resource type="Texture2D" uid="uid://c4jwk4jnyo8wg" path="res://assets/inventory.png" id="2_07bn5"]
+[ext_resource type="PackedScene" uid="uid://ddvhi60awc8pv" path="res://scenes/shop/slot.tscn" id="2_4wsxb"]
 
 [node name="Node" type="Control"]
 layout_mode = 3
@@ -10,33 +10,80 @@ offset_left = -18.0
 offset_right = -18.0
 script = ExtResource("1_ot241")
 
-[node name="layer" type="CanvasLayer" parent="."]
+[node name="bgColor" type="ColorRect" parent="."]
 visible = false
-offset = Vector2(-107, -154)
-transform = Transform2D(1, 0, 0, 1, -107, -154)
-follow_viewport_enabled = true
-
-[node name="texture" type="TextureRect" parent="layer"]
-anchors_preset = -1
-anchor_right = 0.029
-offset_left = 1.0
-offset_top = 3.0
-offset_right = 197.02
-offset_bottom = 148.0
-texture = ExtResource("2_07bn5")
-
-[node name="container" type="ScrollContainer" parent="layer/texture"]
+z_index = 3
 layout_mode = 0
-offset_left = 6.0
-offset_top = 7.0
-offset_right = 212.0
-offset_bottom = 138.0
-tooltip_text = "Inventário"
+offset_left = -181.0
+offset_top = -227.0
+offset_right = 219.0
+offset_bottom = -2.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0.301961, 0.52549, 0.964706)
 
-[node name="grid" type="GridContainer" parent="layer/texture/container"]
+[node name="Container" type="GridContainer" parent="."]
+visible = false
+z_index = 3
+layout_mode = 0
+offset_left = -172.0
+offset_top = -192.0
+offset_right = 213.0
+offset_bottom = -6.0
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 3
+columns = 6
+
+[node name="slot" parent="Container" instance=ExtResource("2_4wsxb")]
 layout_mode = 2
-theme_override_constants/h_separation = 28
-theme_override_constants/v_separation = 28
-columns = 5
 
-[connection signal="visibility_changed" from="layer" to="layer" method="_on_visibility_changed"]
+[node name="slot2" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot3" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot4" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot5" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot6" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot7" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot8" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot9" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot10" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot11" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot12" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot13" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot14" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot15" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot16" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot17" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2
+
+[node name="slot18" parent="Container" instance=ExtResource("2_4wsxb")]
+layout_mode = 2

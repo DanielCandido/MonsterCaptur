@@ -78,8 +78,6 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	
-	_show_inventory()
 		
 	_life_bar.value = player_life
 	
@@ -231,11 +229,6 @@ func _knockback(knockback_force := Vector2.ZERO, duration := 0.25) -> void:
 		animation_action.modulate = Color(1,0,0,1)
 		knockback_tween.tween_property(animation_action, "modulate", Color(1,1,1,1), duration)
 
-func _show_inventory():
-	if Input.is_action_just_pressed("inventory"):
-		var position = self.global_position
-		inventory.show_inventory(position)
-		owner._inventory_is_opened = !owner._inventory_is_opened
 
 func _animated():
 	if _is_death == true:

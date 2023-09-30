@@ -6,8 +6,10 @@ var troop = null
 func _ready():
 	pass # Replace with function body.
 
+var items_data = preload("res://dictionary/items_dictionary.gd")
+
 @export var collectable_data: Array = Array([
-	"eagle_key",
+	1,
 	"Chave que abre a gaiola do Aguia Guardiã",
 	"res://assets/drops/key.png",
 	"",
@@ -16,7 +18,7 @@ func _ready():
 ])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):	
+func _process(delta):
 	if is_instance_valid(troop) and Input.is_action_just_pressed("interaction"):
 		troop.inventory.send_item(collectable_data)
 

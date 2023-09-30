@@ -24,6 +24,7 @@ func _show_shop():
 		$bgColor.show()
 		$Container.show()
 		_shop_is_opened = true
+		ProjectSettings.set_setting("shop_is_opened", true)
 
 func _close_shop():
 	if _entered_area and _body_player != null and _shop_is_opened and Input.is_action_just_pressed("cancel"):
@@ -32,6 +33,7 @@ func _close_shop():
 		$bgColor.hide()
 		$Container.hide()
 		_shop_is_opened = false
+		ProjectSettings.set_setting("shop_is_opened", false)
 
 func _on_area_body_entered(body):	
 	if body.is_in_group("player"):

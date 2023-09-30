@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var player = $npc as CharacterBody2D
 @onready var camera = $cam as Camera2D
-@onready var _inventory_is_opened = false
-@onready var _shop_is_opened = false
+var _inventory_is_opened = false
+var _shop_is_opened = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_inventory_is_opened = ProjectSettings.get_setting("inventory_is_opened")
+	_shop_is_opened = ProjectSettings.get_setting("shop_is_opened")
+	
 	var _player_process = !_inventory_is_opened and !_shop_is_opened
 	player.set_physics_process(_player_process)
 	
