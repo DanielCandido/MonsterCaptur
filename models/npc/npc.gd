@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 #player info
 const _original_speed = 250.0
-var SPEED = _original_speed
 const JUMP_VELOCITY = -350.0
+var SPEED = _original_speed
 var direction = 0
 var player_life = 350.00
 var _attack_type
@@ -11,11 +11,11 @@ var _current_animation = "idle"
 var knockback_vector := Vector2.ZERO
 
 #player state
+@onready var _is_death := false
+@onready var animation_action := $texture as Sprite2D
 var _is_attacking = false
 var _is_attacked = false
 var _last_direction = 0
-@onready var _is_death := false
-@onready var animation_action := $texture as Sprite2D
 
 #basic attack
 var _basic_attack_damage = 80.0
@@ -58,6 +58,12 @@ var enemy
 var _state_machine
 @export_category("Objects")
 @export var _animation_tree: AnimationTree = null
+
+var basic_attack_animation = [
+	"basic_attack",
+	"basic_attack_2"
+]
+var current_attack_index := 1 as int
 
 func _ready():
 	_state_machine = _animation_tree["parameters/playback"]
@@ -125,7 +131,15 @@ func _cooldown(attack_type: String):
 		elif _fireball_attack_cooldown.value == _fireball_attack_cooldown.max_value:
 			_fireball_attack_cooldown_time = 0
 			_fireball_attack_cooldown_active = false
-	
+
+func _cancel_move():
+	direction = 0
+	SPEED = 0
+
+func _return_move():
+	direction = _last_direction
+	SPEED = _original_speed
+
 func _move():
 	direction = Input.get_axis("ui_left", "ui_right")
 	
@@ -134,6 +148,7 @@ func _move():
 		_animation_tree["parameters/run/blend_position"].x = direction
 		_animation_tree["parameters/death/blend_position"].x = direction
 		_animation_tree["parameters/basic_attack/blend_position"].x = direction
+		_animation_tree["parameters/basic_attack_2/blend_position"].x = direction
 		_animation_tree["parameters/fire_attack/blend_position"].x = direction
 		_animation_tree["parameters/damage/blend_position"].x = direction
 		_animation_tree["parameters/fireball/blend_position"].x = direction
@@ -152,6 +167,7 @@ func _attack():
 		_attack_timer.start()
 		_is_attacking = true
 		_attack_type = "basic_attack"
+		current_attack_index = 0 if current_attack_index != 0 else 1
 		
 func _active_fireball_attack():
 	if Input.is_action_just_pressed("fireball_attack") and !_fireball_attack_cooldown_active:
@@ -243,7 +259,7 @@ func _animated():
 		return
 	
 	if _is_attacking:
-		_state_machine.travel("basic_attack")
+		_state_machine.travel(basic_attack_animation[current_attack_index])
 		return
 
 	if velocity.y < 0:

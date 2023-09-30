@@ -1,0 +1,155 @@
+[gd_scene load_steps=10 format=3 uid="uid://boxurm1yd8iex"]
+
+[ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_hs6kb"]
+[ext_resource type="Texture2D" uid="uid://c76vsiplj3ssp" path="res://assets/oak_woods_v1.0/decorations/shop_anim.png" id="1_q45hr"]
+[ext_resource type="AudioStream" uid="uid://bh7oj7qa06ctg" path="res://assets/sounds/shop/Divine Protection_Goblin Shop_Goblin Shop_00001.mp3" id="3_htrks"]
+[ext_resource type="AudioStream" uid="uid://dkll50711hndk" path="res://assets/sounds/shop/Divine Protection_Goblin Shop_Goblin Shop_00002.mp3" id="4_vnelj"]
+[ext_resource type="PackedScene" uid="uid://ddvhi60awc8pv" path="res://scenes/shop/slot.tscn" id="5_omvb2"]
+
+[sub_resource type="Animation" id="Animation_p6yal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5smmb"]
+resource_name = "shop"
+length = 0.55
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41vho"]
+_data = {
+"RESET": SubResource("Animation_p6yal"),
+"shop": SubResource("Animation_5smmb")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btefc"]
+size = Vector2(144, 86)
+
+[node name="shop" type="Node2D"]
+light_mask = 2
+z_as_relative = false
+script = ExtResource("1_hs6kb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q45hr")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_41vho")
+}
+
+[node name="area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="collision" type="CollisionShape2D" parent="area"]
+position = Vector2(-3, 21)
+shape = SubResource("RectangleShape2D_btefc")
+
+[node name="welcome" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_htrks")
+
+[node name="seeYouLater" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vnelj")
+
+[node name="bgColor" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+offset_left = -204.0
+offset_top = -156.0
+offset_right = 196.0
+offset_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0.301961, 0.52549, 0.964706)
+
+[node name="Container" type="GridContainer" parent="."]
+visible = false
+z_index = 3
+offset_left = -195.0
+offset_top = -116.0
+offset_right = 190.0
+offset_bottom = 70.0
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 3
+columns = 6
+
+[node name="slot" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+item = [40, "Recupera 100 de vida", "res://assets/drops/health.png", "simple_potion_health", "consumable", "Poção de cura"]
+
+[node name="slot2" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot3" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot4" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot5" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot6" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot7" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot8" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot9" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot10" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot11" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot12" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot13" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot14" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot15" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot16" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot17" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[node name="slot18" parent="Container" instance=ExtResource("5_omvb2")]
+layout_mode = 2
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]

@@ -1,10 +1,16 @@
-[gd_scene load_steps=75 format=3 uid="uid://c163k2isyesac"]
+[gd_scene load_steps=88 format=3 uid="uid://c163k2isyesac"]
 
 [ext_resource type="Script" path="res://models/npc/npc.gd" id="1_hsunt"]
 [ext_resource type="Texture2D" uid="uid://crcw8ottdijag" path="res://assets/player/Fire_Warrior/Fire_Warrior-Sheet.png" id="1_nmk85"]
 [ext_resource type="Texture2D" uid="uid://dvybuqwa12uhn" path="res://assets/skill_icons/fire_sword_icon.png" id="3_jwpef"]
+[ext_resource type="AudioStream" uid="uid://dqjtpq3qc3k4g" path="res://assets/sounds/jump.mp3" id="4_2o245"]
 [ext_resource type="Texture2D" uid="uid://cisqmnulupmut" path="res://assets/skill_icons/fireball.png" id="4_h7lih"]
+[ext_resource type="AudioStream" uid="uid://dvanx0e6vln60" path="res://assets/sounds/running.mp3" id="4_p5eql"]
+[ext_resource type="AudioStream" uid="uid://dmjbu03x5qe3u" path="res://assets/sounds/sword.mp3" id="4_vrb4k"]
 [ext_resource type="PackedScene" uid="uid://bhxrw3gkbiy00" path="res://prefabs/inventory/inventory.tscn" id="5_idton"]
+[ext_resource type="AudioStream" uid="uid://b0vkls6h86lpq" path="res://assets/sounds/fireball.mp3" id="5_s1jce"]
+[ext_resource type="AudioStream" uid="uid://dyjtxplbvjitx" path="res://assets/sounds/fire_attack.mp3" id="5_uyotv"]
+[ext_resource type="AudioStream" uid="uid://c71lmw4m1wrwi" path="res://assets/sounds/sword_2.mp3" id="7_l3iw6"]
 
 [sub_resource type="Animation" id="Animation_voqqs"]
 length = 0.001
@@ -44,10 +50,34 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(14, -24)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attack_area/basic_attack_collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack_area/basic_attack_collision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-21.25, -23)]
+}
 
 [sub_resource type="Animation" id="Animation_v4gq5"]
 resource_name = "basic_attack"
-length = 0.4
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -68,7 +98,7 @@ tracks/1/path = NodePath("attack_area/basic_attack_collision:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -109,10 +139,185 @@ tracks/4/keys = {
 "update": 1,
 "values": [Vector2(21.25, -23)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.18,
+"start_offset": 0.13,
+"stream": ExtResource("4_vrb4k")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="Animation" id="Animation_pnd2v"]
+resource_name = "basic_attack_2"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [160, 161, 162, 163]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack_area/basic_attack_collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.17,
+"start_offset": 0.18,
+"stream": ExtResource("7_l3iw6")
+}],
+"times": PackedFloat32Array(0.03)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack_area/basic_attack_collision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21.25, -23)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("texture:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_uqlb3"]
+resource_name = "basic_attack_2_left"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [160, 161, 162, 163]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack_area/basic_attack_collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.17,
+"start_offset": 0.18,
+"stream": ExtResource("7_l3iw6")
+}],
+"times": PackedFloat32Array(0.03)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack_area/basic_attack_collision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-21.25, -23)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("texture:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, -24)]
+}
 
 [sub_resource type="Animation" id="Animation_0pjxq"]
 resource_name = "basic_attack_left"
-length = 0.4
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -174,6 +379,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [Vector2(-21.25, -23)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.14,
+"start_offset": 0.13,
+"stream": ExtResource("4_vrb4k")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ytf1s"]
 resource_name = "damage"
@@ -323,6 +543,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_uyotv")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_fgpqe"]
 resource_name = "fire_attack_left"
@@ -376,6 +611,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_uyotv")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_eehjb"]
 resource_name = "fireball"
@@ -441,6 +691,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [Vector2(46, -29)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 1.21,
+"start_offset": 1.59,
+"stream": ExtResource("5_s1jce")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_346lt"]
 resource_name = "fireball_left"
@@ -505,6 +770,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [Vector2(-46, -29)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 1.42,
+"start_offset": 1.39,
+"stream": ExtResource("5_s1jce")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_t2vyv"]
 resource_name = "idle"
@@ -590,7 +870,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_y52sp"]
 resource_name = "jump"
-length = 0.5
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -604,10 +884,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [113, 113, 114, 114, 114, 114]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_2o245")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_hoppl"]
 resource_name = "run"
-length = 0.4
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -645,10 +940,25 @@ tracks/2/keys = {
 "update": 1,
 "values": [Vector2(14, -24)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 1.42,
+"start_offset": 0.0,
+"stream": ExtResource("4_p5eql")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_5kbul"]
 resource_name = "run_left"
-length = 0.4
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -686,6 +996,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [Vector2(-14, -24)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 1.43,
+"start_offset": 0.0,
+"stream": ExtResource("4_p5eql")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_6i75b"]
 resource_name = "squat"
@@ -769,6 +1094,8 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_voqqs"),
 "basic_attack": SubResource("Animation_v4gq5"),
+"basic_attack_2": SubResource("Animation_pnd2v"),
+"basic_attack_2_left": SubResource("Animation_uqlb3"),
 "basic_attack_left": SubResource("Animation_0pjxq"),
 "damage": SubResource("Animation_ytf1s"),
 "damage_left": SubResource("Animation_70wj3"),
@@ -807,6 +1134,29 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_tg84p")
 blend_point_2/pos = Vector2(0, -1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_qpyq5")
 blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f26iu"]
+animation = &"basic_attack_2_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ksjri"]
+animation = &"basic_attack_2_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ahxob"]
+animation = &"basic_attack_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qgyvr"]
+animation = &"basic_attack_2"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_kmibn"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_f26iu")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ksjri")
+blend_point_1/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ahxob")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_qgyvr")
+blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ajm1r"]
@@ -987,6 +1337,8 @@ blend_mode = 1
 states/Start/position = Vector2(226.667, 98.6667)
 states/basic_attack/node = SubResource("AnimationNodeBlendSpace2D_c3cv6")
 states/basic_attack/position = Vector2(551.783, 322.944)
+states/basic_attack_2/node = SubResource("AnimationNodeBlendSpace2D_kmibn")
+states/basic_attack_2/position = Vector2(541.782, 638.458)
 states/damage/node = SubResource("AnimationNodeBlendSpace2D_aypnu")
 states/damage/position = Vector2(554.667, 449.067)
 states/death/node = SubResource("AnimationNodeBlendSpace2D_pwpu0")
@@ -1003,7 +1355,7 @@ states/run/node = SubResource("AnimationNodeBlendSpace2D_8i8wk")
 states/run/position = Vector2(548.889, 156.667)
 states/squat/node = SubResource("AnimationNodeBlendSpace2D_yiqth")
 states/squat/position = Vector2(550.668, 579.183)
-graph_offset = Vector2(-6.21772, 354.183)
+graph_offset = Vector2(-6.21772, 493.458)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhvfs"]
 size = Vector2(21.5, 44)
@@ -1027,7 +1379,8 @@ modulate_color = Color(0.988235, 0, 0, 1)
 ProgressBar/colors/font_outline_color = Color(0, 1, 0, 1)
 ProgressBar/styles/background = SubResource("StyleBoxTexture_3yolc")
 
-[node name="npc" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree")]
+[node name="npc" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["player"]]
+z_index = 1
 collision_mask = 6
 script = ExtResource("1_hsunt")
 _animation_tree = NodePath("AnimationTree")
@@ -1051,6 +1404,7 @@ tree_root = SubResource("AnimationNodeStateMachine_ld2tx")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/basic_attack/blend_position = Vector2(0, 0)
+parameters/basic_attack_2/blend_position = Vector2(0, 0)
 parameters/damage/blend_position = Vector2(0, 0)
 parameters/death/blend_position = Vector2(0, 0)
 parameters/fire_attack/blend_position = Vector2(0, 0)
@@ -1069,7 +1423,7 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="basic_attack_collision" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(21.25, -23)
+position = Vector2(-21.25, -23)
 shape = SubResource("RectangleShape2D_uhvfs")
 disabled = true
 
@@ -1095,7 +1449,7 @@ shape = SubResource("RectangleShape2D_86cyb")
 disabled = true
 
 [node name="skills" type="Node2D" parent="."]
-position = Vector2(-154, -101)
+position = Vector2(-210, -110)
 
 [node name="sword_fire_attack" type="Node2D" parent="skills"]
 
@@ -1110,6 +1464,7 @@ value = 20.0
 rounded = true
 fill_mode = 3
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="fire_attack_icon" type="Sprite2D" parent="skills/sword_fire_attack"]
 position = Vector2(16, -6)
@@ -1138,6 +1493,7 @@ value = 35.0
 rounded = true
 fill_mode = 3
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="fireball_attack_animation_timer" type="Timer" parent="skills/fireball_attack"]
 wait_time = 2.994
@@ -1151,6 +1507,9 @@ offset_bottom = -17.0
 theme = SubResource("Theme_plm5y")
 max_value = 0.0
 show_percentage = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]

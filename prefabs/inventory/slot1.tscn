@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://2oht737hqpfg"]
+
+[ext_resource type="Script" path="res://scenes/shop/slot.gd" id="1_2k61i"]
+[ext_resource type="Texture2D" uid="uid://b5uo5w1qw76gn" path="res://assets/slot.png" id="2_eewhl"]
+
+[node name="slot" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -784.0
+offset_bottom = -384.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2k61i")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eewhl")
+expand_mode = 1
+
+[node name="sprite" type="TextureRect" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="amount" type="Label" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 2
+vertical_alignment = 2

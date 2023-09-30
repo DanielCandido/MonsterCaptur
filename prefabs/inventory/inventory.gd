@@ -34,7 +34,12 @@ func send_item(list: Array):
 	var item = TextureRect.new()
 	var image_path = list[item_list.IMAGE] as String
 	item.name = list[item_list.NAME]
-	item.texture = preload("res://assets/drops/key.png")
+	item.texture = load(list[item_list.IMAGE])
+	item.tooltip_text = list[item_list.NAME] + "\n" + list[item_list.DESCRIPTION]
+	item.custom_minimum_size.x = 30
+	item.custom_minimum_size.y = 30
+	item.set_global_position(Vector2(10, 10))
+	item.position.y = 10
 	grid.add_child(item)
 	
 func update_slot(slot_index: int, new_amount: int) -> void:

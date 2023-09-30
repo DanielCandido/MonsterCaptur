@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkll50711hndk"
+path="res://.godot/imported/Divine Protection_Goblin Shop_Goblin Shop_00002.mp3-48efed96ced7bc2103d5146b7232c5b4.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/shop/Divine Protection_Goblin Shop_Goblin Shop_00002.mp3"
+dest_files=["res://.godot/imported/Divine Protection_Goblin Shop_Goblin Shop_00002.mp3-48efed96ced7bc2103d5146b7232c5b4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
