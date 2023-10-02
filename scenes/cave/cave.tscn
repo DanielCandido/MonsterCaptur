@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c54v85r0il686"]
+[gd_scene load_steps=11 format=3 uid="uid://c54v85r0il686"]
 
 [ext_resource type="Texture2D" uid="uid://cjpot1ja8wep6" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_0gdui"]
 [ext_resource type="Texture2D" uid="uid://bo8w4i365daby" path="res://assets/caves/background1.png" id="1_q43kn"]
+[ext_resource type="Texture2D" uid="uid://cu053jqmxigrx" path="res://assets/parallax/Fort of Illusion Files/Layers/tileset.png" id="2_4erh4"]
 [ext_resource type="Texture2D" uid="uid://cwc40w4tuxg00" path="res://assets/caves/background2.png" id="2_7kyhr"]
 [ext_resource type="Texture2D" uid="uid://q3bkqpytplvr" path="res://assets/caves/background3.png" id="3_ojrt8"]
 [ext_resource type="Texture2D" uid="uid://bwc67xubhrmrv" path="res://assets/caves/background4a.png" id="4_0hll3"]
@@ -1246,10 +1247,50 @@ texture = ExtResource("1_0gdui")
 17:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:11/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yk7rx"]
+texture = ExtResource("2_4erh4")
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:5/0 = 0
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
+0:6/0 = 0
+0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:6/0/physics_layer_0/angular_velocity = 0.0
+1:6/0 = 0
+1:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:6/0/physics_layer_0/angular_velocity = 0.0
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_caynw"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_rgjjd")
+sources/1 = SubResource("TileSetAtlasSource_yk7rx")
 
 [node name="cave" type="TileMap"]
 tile_set = SubResource("TileSet_caynw")
