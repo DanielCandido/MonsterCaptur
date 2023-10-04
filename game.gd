@@ -36,10 +36,18 @@ func _close_shop():
 func _on_castle_door_body_entered(body: CharacterBody2D):
 	if body.is_in_group("player"):
 		troop = body
+		var action = InputMap.action_get_events("interaction")[0]
+		var tecla = action.as_text().split(" ")[0]
+		
+		var image = load("res://addons/controller_icons/assets/key/" + str(tecla) + ".png")
+		
 		$CastleDoor/Label.visible = true
+		$CastleDoor/Label/Icon.texture = image
+		$CastleDoor/Label/Icon.visible = true
 
 
 func _on_castle_door_body_exited(body):
 	if body.is_in_group("player"):
 		troop = null
 		$CastleDoor/Label.visible = false
+		$CastleDoor/Label/Icon.visible = false

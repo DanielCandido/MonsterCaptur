@@ -54,9 +54,18 @@ func _on_area_body_entered(body):
 	if body.is_in_group("player"):
 		_body_player = body
 		_entered_area = true
+		var action = InputMap.action_get_events("interaction")[0]
+		var key = action.as_text().split(" ")[0]
+		var image = load("res://addons/controller_icons/assets/key/" + str(key) + ".png")	
+		$area/Label.visible = true
+		$area/Label/Icon.texture = image
+		$area/Label/Icon.visible = true
 
 
 func _on_area_body_exited(body):
 	if body.is_in_group("player"):
 		_body_player = null
 		_entered_area = false
+		$area/Label.visible = false
+		$area/Label/Icon.texture = null
+		$area/Label/Icon.visible = false

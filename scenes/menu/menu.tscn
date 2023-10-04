@@ -23,9 +23,9 @@ offset_bottom = 1080.0
 color = Color(0.423529, 0.423529, 0.423529, 0.439216)
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
-offset_left = 672.0
+offset_left = 578.5
 offset_top = 325.0
-offset_right = 1435.0
+offset_right = 1341.5
 offset_bottom = 755.0
 
 [node name="Title" type="Label" parent="MainContainer"]

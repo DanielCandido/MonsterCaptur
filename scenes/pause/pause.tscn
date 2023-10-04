@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bum7rya83nueu"]
+
+[node name="pause" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 700.0
+offset_bottom = 800.0
+color = Color(0.34902, 0.34902, 0.34902, 0.560784)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_top = 188.0
+offset_right = 489.0
+offset_bottom = 522.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonGroup" type="VBoxContainer" parent="MainContainer/HContainer"]
+layout_mode = 2
+
+[node name="play" type="Button" parent="MainContainer/HContainer/ButtonGroup"]
+layout_mode = 2
+text = "Play"
+
+[node name="options" type="Button" parent="MainContainer/HContainer/ButtonGroup"]
+layout_mode = 2
+text = "Options"
+
+[node name="quit" type="Button" parent="MainContainer/HContainer/ButtonGroup"]
+layout_mode = 2
+text = "Quit"
